@@ -1,0 +1,44 @@
+name: Build & Deploy Docs
+
+on:
+  push:
+    branches: [main] # or trigger from the *private* repo via repository_dispatch
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      - PLATFORM_API_KEY: ${{ secrets.PLATFORM_API_KEY }}
+      - ORGANIZATION_ID: ${{ secrets.ORGANIZATION_ID }}
+      - USER_ID: ${{ secrets.USER_ID }}
+
+    steps:
+      # checkout public docs
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      # checkout private source repo into a sub-folder
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          repository: alchemyst-ai/platform
+          path: private-api
+          token: ${{ env.PRIVATE_REPO_TOKEN }}
+
+      # install deps
+      - run: npm ci
+
+      # run the fetch-and-generate script
+      - name: Generate API list
+        run: node scripts/ctx.js # <-- lives in public repo
+
+      # build your static site (Docusaurus, Astro, VitePress, etc.)
+      - run: npm run build
+
+      # deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

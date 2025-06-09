@@ -1,6 +1,6 @@
 const PLATFORM_BASE_URLS = {
-  staging: "platform-dev.getalchemystai.com",
-  main: "platform-backend.getalchemystai.com",
+  staging: "https://platform-dev.getalchemystai.com",
+  main: "https://platform-backend.getalchemystai.com",
 };
 
 const PLATFORM_API_KEY = process.env.PLATFORM_API_KEY;

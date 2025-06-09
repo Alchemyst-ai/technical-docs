@@ -31,7 +31,7 @@ jobs:
 
       # run the fetch-and-generate script
       - name: Generate API list
-        run: node scripts/ctx.js # <-- lives in public repo
+        run: node ctx.js # <-- lives in public repo
 
 
       # build your static site (Docusaurus, Astro, VitePress, etc.)

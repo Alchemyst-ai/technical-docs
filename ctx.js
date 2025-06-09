@@ -89,7 +89,7 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
 const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
   try {
     const openApiContext = JSON.stringify(newOpenApiContext);
-    if (!newContextApiJson) return null;
+    if (!newOpenApiContext) return null;
     // Implementation details would go here
     const addResponse = await fetch(
       `${PLATFORM_BASE_URLS[branch]}/api/v1/context/add`,

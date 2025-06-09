@@ -24,7 +24,7 @@ const PLATFORM_API_KEY = process.env.PLATFORM_API_KEY;
 
     return openApiJson;
   } catch (error) {
-    console.log("Error encountered: ", error.message);
+    console.log("Error encountered while fetching OpenAPI JSON: ", error.message);
     return null;
   }
 };
@@ -153,4 +153,4 @@ const replaceOpenApiFileContext = async (branch = "main") => {
   }
 };
 
-replaceOpenApiFileContext("main");
+replaceOpenApiFileContext("staging");

@@ -9,9 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      - PLATFORM_API_KEY: ${{ secrets.PLATFORM_API_KEY }}
-      - ORGANIZATION_ID: ${{ secrets.ORGANIZATION_ID }}
-      - USER_ID: ${{ secrets.USER_ID }}
+      PLATFORM_API_KEY: ${{ secrets.PLATFORM_API_KEY }}
+      ORGANIZATION_ID: ${{ secrets.ORGANIZATION_ID }}
+      USER_ID: ${{ secrets.USER_ID }}
 
     steps:
       # checkout public docs

@@ -15,19 +15,19 @@ jobs:
 
     steps:
       # checkout public docs
-      # - name: Checkout docs repo
-      #   uses: actions/checkout@v4
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
 
-      # # checkout private source repo into a sub-folder
-      # - name: Checkout private repo
-      #   uses: actions/checkout@v4
-      #   with:
-      #     repository: alchemyst-ai/platform
-      #     path: private-api
-      #     token: ${{ env.PLATFORM_API_bKEY }}
+      # checkout private source repo into a sub-folder
+      - name: Checkout private repo
+        uses: actions/checkout@v4
+        with:
+          repository: alchemyst-ai/platform
+          path: private-api
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # install deps
-      # - run: npm ci
+      - run: npm ci
 
       # run the fetch-and-generate script
       - name: Generate API list

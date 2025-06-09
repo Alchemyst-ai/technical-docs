@@ -15,16 +15,16 @@ jobs:
 
     steps:
       # checkout public docs
-      - name: Checkout docs repo
-        uses: actions/checkout@v4
+      # - name: Checkout docs repo
+      #   uses: actions/checkout@v4
 
-      # checkout private source repo into a sub-folder
-      - name: Checkout private repo
-        uses: actions/checkout@v4
-        with:
-          repository: alchemyst-ai/platform
-          path: private-api
-          token: ${{ env.PLATFORM_API_KEY }}
+      # # checkout private source repo into a sub-folder
+      # - name: Checkout private repo
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: alchemyst-ai/platform
+      #     path: private-api
+      #     token: ${{ env.PLATFORM_API_bKEY }}
 
       # install deps
       - run: npm ci

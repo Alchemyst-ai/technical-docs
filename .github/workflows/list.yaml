@@ -27,7 +27,7 @@ jobs:
       #     token: ${{ env.PLATFORM_API_bKEY }}
 
       # install deps
-      - run: npm ci
+      # - run: npm ci
 
       # run the fetch-and-generate script
       - name: Generate API list

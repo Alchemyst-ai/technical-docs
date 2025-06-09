@@ -4,8 +4,6 @@ const PLATFORM_BASE_URLS = {
 };
 
 const PLATFORM_API_KEY = process.env.PLATFORM_API_KEY;
-const ORGANIZATION_ID = process.env.ORGANIZATION_ID;
-const USER_ID = process.env.USER_ID;
 
 /**
  * Fetches OpenAPI documentation from the platform backend.
@@ -57,8 +55,6 @@ const doesOpenApiContextExist = async (branch = "main") => {
 const deleteExistingOpenApiContext = async (branch = "main") => {
   const deleteContextRequest = {
     source: "openapi.json",
-    user_id: USER_ID,
-    organization_id: ORGANIZATION_ID,
     by_doc: true,
     by_id: false,
   };

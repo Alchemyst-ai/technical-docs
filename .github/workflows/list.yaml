@@ -1,45 +1,18 @@
-name: Build & Deploy Docs
+name: Update OpenAPI Context
 
 on:
-  push:
-    branches: [main]
   schedule:
     - cron: "0 0 * * *" # Runs at 00:00 UTC every day
-  # workflow_dispatch:
 
 jobs:
-  build:
+  update-context:
     runs-on: ubuntu-latest
     env:
       PLATFORM_API_KEY: ${{ secrets.PLATFORM_API_KEY }}
 
     steps:
-      # checkout public docs
-      - name: Checkout docs repo
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      # checkout private source repo into a sub-folder
-      - name: Checkout private repo
-        uses: actions/checkout@v4
-        with:
-          repository: alchemyst-ai/platform
-          path: private-api
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # install deps
-      - run: npm ci
-
-      # run the fetch-and-generate script
-      - name: Generate API list
-        run: node ctx.js # <-- lives in public repo
-
-
-      # build your static site (Docusaurus, Astro, VitePress, etc.)
-      # - run: npm run build
-
-      # # deploy to GitHub Pages
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./build
+      - name: Run context update
+        run: node ctx.js

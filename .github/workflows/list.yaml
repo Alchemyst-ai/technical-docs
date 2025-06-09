@@ -2,7 +2,7 @@ name: Update OpenAPI Context
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs at 00:00 UTC every day
+    - cron: "0 0 * * *" # Runs at 00:00 UTC every day (5:30 am IST)
 
 jobs:
   update-context:

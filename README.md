@@ -63,7 +63,7 @@ OpenAI-compatible proxy API that provides intelligent context filtering and chat
 <!-- - [Examples & Tutorials](./docs/examples.md) -->
 <!-- - [API Reference](./docs/api-reference.md) -->
 
-## 🔧 Development
+<!-- ## 🔧 Development
 
 ### Testing
 ```bash
@@ -74,8 +74,8 @@ npm test
 npm test context
 npm test chat
 npm test proxy
-```
-
+``` -->
+<!-- 
 ### Environment Setup
 ```bash
 # Copy environment template
@@ -86,14 +86,14 @@ npm install
 
 # Start development server
 npm run dev
-```
+``` -->
 
-## 📞 Support
+<!-- ## 📞 Support
 
 For questions, issues, or feature requests:
 - 📧 Email: support@your-domain.com
 - 🐛 Issues: [GitHub Issues](https://github.com/your-org/your-repo/issues)
-- 📖 Documentation: [API Docs](https://docs.your-domain.com)
+- 📖 Documentation: [API Docs](https://docs.your-domain.com) -->
 
 ## 📜 License
 

@@ -60,6 +60,12 @@ Provides OpenAI-compatible chat completions with intelligent context processing.
 /api/v1/proxy/https://api.openai.com/v1/sk-your-api-key-here/chat/completions
 ```
 
+### Default Route (No OpenAI API Required)
+
+**POST** `/api/v1/proxy/default/chat/completions`
+
+For users who don't have an OpenAI API key, this route provides chat completions using our own infrastructure without requiring external API keys.
+
 ## Features
 
 ### Intelligent Message Filtering

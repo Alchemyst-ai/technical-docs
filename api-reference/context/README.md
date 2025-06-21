@@ -48,6 +48,7 @@ Adds context data to the context processor for further handling.
 | `context_type` | string | No | Type: `resource`, `conversation`, or `instruction` |
 | `scope` | string | No | Scope: `internal` or `external` (default: `internal`) |
 | `metadata` | object | No | Additional metadata (default: `{}`) |
+| `chained`  | boolean | No | To be chained or not |
 
 #### Document Object Structure
 
@@ -216,14 +217,14 @@ curl -X POST /api/v1/context/add \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "user_id": "user123",
     "documents": [
       {
         "content": "User preferences for AI interactions"
       }
     ],
-    "source": "user_settings",
+    "source": "platform/maya/smart-settings.upload",
     "context_type": "resource",
+    "chained": "false"
     "scope": "internal"
   }'
 ```
@@ -235,11 +236,11 @@ curl -X POST /api/v1/context/search \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "user_id": "user123",
     "query": "user preferences",
     "similarity_threshold": 0.8,
     "minimum_similarity_threshold": 0.5,
-    "scope": "internal"
+    "scope": "internal",
+    "metadata": {}
   }'
 ```
 
@@ -250,9 +251,9 @@ curl -X POST /api/v1/context/delete \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
-    "source": "user_settings",
-    "user_id": "user123",
-    "by_doc": true
+    "source": "file Name",
+    "by_doc": true,
+    "by_id" : false
   }'
 ```
 

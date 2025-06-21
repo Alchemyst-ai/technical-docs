@@ -161,9 +161,38 @@ Retrieves context information for the authenticated user.
 ```json
 {
   "context": [
-    // Array of context items
+    {
+      "_id": "string",
+      "user_id": "string",
+      "organization_id": "string | null",
+      "parent_context_nodes": ["string"],
+      "children_context_nodes": ["string"],
+      "context_type": "string",
+      "tags": ["string"],
+      "source": "string",
+      "content": "object | string",
+      "blob": "any | null",
+      "indexed": "boolean",
+      "indexable": "boolean",
+      "governing_policies": "string | array | null",
+      "override_policy": "boolean",
+      "telemetry_data": "object",
+      "createdAt": "string (ISO 8601 timestamp)",
+      "updatedAt": "string (ISO 8601 timestamp)",
+      "scopes": ["string"],
+      "metadata": {
+        "size": "number",
+        "file_name": "string",
+        "doc_type": "string",
+        "modalities": ["string"]
+      },
+      "corresponding_vector_id": "string",
+      "text": "string",
+      "score": "number"
+    }
   ]
 }
+
 ```
 
 ---
@@ -227,8 +256,14 @@ curl -X POST https://platform-backend.getalchemystai.com/api/v1/context/add \
     ],
     "source": "platform/maya/smart-settings.upload",
     "context_type": "resource",
-    "chained": "false"
-    "scope": "internal"
+    "chained": "false",
+    "scope": "internal",
+    "metadata": {
+      "file_name" : "Name of file",
+      "doc_type" : "Type of file",
+      "modalities": "['text', 'image']",
+      size : "Size of file"
+    }
   }'
 ```
 
@@ -248,8 +283,14 @@ const response = await fetch('https://platform-backend.getalchemystai.com/api/v1
     ],
     source: "platform/maya/smart-settings.upload",
     context_type: "resource",
-    chained: false,
-    scope: "internal"
+    chained: "false",
+    scope: "internal",
+    metadata: {
+      file_name: "Name of file",
+      doc_type: "Type of file",
+      modalities: "['text', 'image']",
+      size: "Size of file"
+    }
   })
 });
 
@@ -266,6 +307,7 @@ headers = {
     'Authorization': 'Bearer <token>',
     'Content-Type': 'application/json'
 }
+
 data = {
     "documents": [
         {
@@ -274,8 +316,14 @@ data = {
     ],
     "source": "platform/maya/smart-settings.upload",
     "context_type": "resource",
-    "chained": False,
-    "scope": "internal"
+    "chained": "false",
+    "scope": "internal",
+    "metadata": {
+        "file_name": "Name of file",
+        "doc_type": "Type of file",
+        "modalities": "['text', 'image']",
+        "size": "Size of file"
+    }
 }
 
 response = requests.post(url, headers=headers, json=data)

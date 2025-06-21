@@ -229,6 +229,56 @@ curl -X POST /api/v1/context/add \
   }'
 ```
 
+#### Bun
+```javascript
+const response = await fetch('/api/v1/context/add', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    documents: [
+      {
+        content: "User preferences for AI interactions"
+      }
+    ],
+    source: "platform/maya/smart-settings.upload",
+    context_type: "resource",
+    chained: false,
+    scope: "internal"
+  })
+});
+
+const result = await response.json();
+console.log(result);
+```
+
+#### Python (requests)
+```python
+import requests
+
+url = '/api/v1/context/add'
+headers = {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+}
+data = {
+    "documents": [
+        {
+            "content": "User preferences for AI interactions"
+        }
+    ],
+    "source": "platform/maya/smart-settings.upload",
+    "context_type": "resource",
+    "chained": False,
+    "scope": "internal"
+}
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+
 ### Searching Context
 
 ```bash
@@ -244,6 +294,48 @@ curl -X POST /api/v1/context/search \
   }'
 ```
 
+#### Bun
+```javascript
+const response = await fetch('/api/v1/context/search', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    query: "user preferences",
+    similarity_threshold: 0.8,
+    minimum_similarity_threshold: 0.5,
+    scope: "internal",
+    metadata: {}
+  })
+});
+
+const searchResults = await response.json();
+console.log(searchResults);
+```
+
+#### Python (requests)
+```python
+import requests
+
+url = '/api/v1/context/search'
+headers = {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+}
+data = {
+    "query": "user preferences",
+    "similarity_threshold": 0.8,
+    "minimum_similarity_threshold": 0.5,
+    "scope": "internal",
+    "metadata": {}
+}
+
+response = requests.post(url, headers=headers, json=data)
+print(response.json())
+```
+
 ### Deleting Context
 
 ```bash
@@ -257,11 +349,79 @@ curl -X POST /api/v1/context/delete \
   }'
 ```
 
+
+#### Bun
+```javascript
+const response = await fetch('/api/v1/context/delete', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    source: "file Name",
+    by_doc: true,
+    by_id: false
+  })
+});
+
+// 204 status code indicates successful deletion with no content
+if (response.status === 204) {
+  console.log('Context deleted successfully');
+}
+```
+
+#### Python (requests)
+```python
+import requests
+
+url = '/api/v1/context/delete'
+headers = {
+    'Authorization': 'Bearer <token>',
+    'Content-Type': 'application/json'
+}
+data = {
+    "source": "file Name",
+    "by_doc": True,
+    "by_id": False
+}
+
+response = requests.post(url, headers=headers, json=data)
+if response.status_code == 204:
+    print('Context deleted successfully')
+```
+
+
 ### Viewing Context
 
 ```bash
 curl -X GET /api/v1/context/view \
   -H "Authorization: Bearer <token>"
+```
+#### Bun
+```javascript
+const response = await fetch('/api/v1/context/view', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <token>'
+  }
+});
+
+const contextData = await response.json();
+console.log(contextData);
+```
+
+#### Python (requests)
+```python
+import requests
+
+url = '/api/v1/context/view'
+headers = {
+    'Authorization': 'Bearer <token>'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
 ```
 
 ### Viewing Documents
@@ -269,6 +429,33 @@ curl -X GET /api/v1/context/view \
 ```bash
 curl -X GET /api/v1/context/view/docs \
   -H "Authorization: Bearer <token>"
+```
+
+
+#### Bun
+```javascript
+const response = await fetch('/api/v1/context/view/docs', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer <token>'
+  }
+});
+
+const documents = await response.json();
+console.log(documents);
+```
+
+#### Python (requests)
+```python
+import requests
+
+url = '/api/v1/context/view/docs'
+headers = {
+    'Authorization': 'Bearer <token>'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())
 ```
 
 ---

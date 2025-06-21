@@ -55,7 +55,10 @@ Adds context data to the context processor for further handling.
 ```json
 {
   "content": "string",
-  "additionalProperties": "string"
+  "fileName": "string",
+  "fileType": "string",
+  "fileSize": "number",
+  "lastModified": "string",
 }
 ```
 

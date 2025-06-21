@@ -26,7 +26,7 @@ Authorization: Bearer <your-token>
 ## Base URL
 
 ```
-/api/v1/context
+https://platform-backend.getalchemystai.com/api/v1/context
 ```
 
 ## Endpoints
@@ -213,7 +213,7 @@ Retrieves documents view for the authenticated user with optional organization c
 ### Adding Context
 
 ```bash
-curl -X POST /api/v1/context/add \
+curl -X POST https://platform-backend.getalchemystai.com/api/v1/context/add \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -231,7 +231,7 @@ curl -X POST /api/v1/context/add \
 
 #### Bun
 ```javascript
-const response = await fetch('/api/v1/context/add', {
+const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/add', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer <token>',
@@ -258,7 +258,7 @@ console.log(result);
 ```python
 import requests
 
-url = '/api/v1/context/add'
+url = 'https://platform-backend.getalchemystai.com/api/v1/context/add'
 headers = {
     'Authorization': 'Bearer <token>',
     'Content-Type': 'application/json'
@@ -282,7 +282,7 @@ print(response.json())
 ### Searching Context
 
 ```bash
-curl -X POST /api/v1/context/search \
+curl -X POST https://platform-backend.getalchemystai.com/api/v1/context/search \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -296,7 +296,7 @@ curl -X POST /api/v1/context/search \
 
 #### Bun
 ```javascript
-const response = await fetch('/api/v1/context/search', {
+const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/search', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer <token>',
@@ -319,7 +319,7 @@ console.log(searchResults);
 ```python
 import requests
 
-url = '/api/v1/context/search'
+url = 'https://platform-backend.getalchemystai.com/api/v1/context/search'
 headers = {
     'Authorization': 'Bearer <token>',
     'Content-Type': 'application/json'
@@ -339,7 +339,7 @@ print(response.json())
 ### Deleting Context
 
 ```bash
-curl -X POST /api/v1/context/delete \
+curl -X POST https://platform-backend.getalchemystai.com/api/v1/context/delete \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{
@@ -352,7 +352,7 @@ curl -X POST /api/v1/context/delete \
 
 #### Bun
 ```javascript
-const response = await fetch('/api/v1/context/delete', {
+const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/delete', {
   method: 'POST',
   headers: {
     'Authorization': 'Bearer <token>',
@@ -375,7 +375,7 @@ if (response.status === 204) {
 ```python
 import requests
 
-url = '/api/v1/context/delete'
+url = 'https://platform-backend.getalchemystai.com/api/v1/context/delete'
 headers = {
     'Authorization': 'Bearer <token>',
     'Content-Type': 'application/json'
@@ -395,12 +395,12 @@ if response.status_code == 204:
 ### Viewing Context
 
 ```bash
-curl -X GET /api/v1/context/view \
+curl -X GET https://platform-backend.getalchemystai.com/api/v1/context/view \
   -H "Authorization: Bearer <token>"
 ```
 #### Bun
 ```javascript
-const response = await fetch('/api/v1/context/view', {
+const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/view', {
   method: 'GET',
   headers: {
     'Authorization': 'Bearer <token>'
@@ -415,7 +415,7 @@ console.log(contextData);
 ```python
 import requests
 
-url = '/api/v1/context/view'
+url = 'https://platform-backend.getalchemystai.com/api/v1/context/view'
 headers = {
     'Authorization': 'Bearer <token>'
 }
@@ -427,14 +427,14 @@ print(response.json())
 ### Viewing Documents
 
 ```bash
-curl -X GET /api/v1/context/view/docs \
+curl -X GET https://platform-backend.getalchemystai.com/api/v1/context/view/docs \
   -H "Authorization: Bearer <token>"
 ```
 
 
 #### Bun
 ```javascript
-const response = await fetch('/api/v1/context/view/docs', {
+const response = await fetch('https://platform-backend.getalchemystai.com/api/v1/context/view/docs', {
   method: 'GET',
   headers: {
     'Authorization': 'Bearer <token>'
@@ -449,7 +449,7 @@ console.log(documents);
 ```python
 import requests
 
-url = '/api/v1/context/view/docs'
+url = 'https://platform-backend.getalchemystai.com/api/v1/context/view/docs'
 headers = {
     'Authorization': 'Bearer <token>'
 }

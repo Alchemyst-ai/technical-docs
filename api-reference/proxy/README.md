@@ -292,18 +292,6 @@ curl -X POST "/api/v1/proxy/https://api.custom-ai.com/v1/custom-key/chat/complet
 5. **API Forwarding**: Sends optimized request to target API
 6. **Response Handling**: Returns standard OpenAI-compatible response
 
-### Relevance Scoring
-
-The system uses an internal AI model to evaluate message relevance:
-
-```typescript
-checkIfTwoMessagesAreRelevant(
-  originalQuery: string,
-  message: string, 
-  mode: "lax" | "strict" | "very strict" = "very strict"
-)
-```
-
 ### Performance Optimizations
 
 - **Parallel Processing**: Relevance checks run concurrently

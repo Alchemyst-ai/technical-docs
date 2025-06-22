@@ -82,7 +82,6 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
   }
 
   const resJson = await response.json();
-  console.log("Response from /api/v1/context/view/docs is not okay. Status: ", fetchDocsRes.status);
 
   return resJson;
 };

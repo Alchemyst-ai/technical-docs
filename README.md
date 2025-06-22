@@ -5,7 +5,7 @@ Welcome to the comprehensive API documentation for our suite of AI-powered servi
 ## 📚 API Documentation
 
 ### Context API
-**See More**: [Api documentation](./api-reference/context-api.md)
+**See More**: [Api documentation](./api-reference/context/README.md)
 
 RESTful API for managing context data including adding, searching, deleting, and viewing context information with user and organization-level access control.
 
@@ -16,7 +16,7 @@ RESTful API for managing context data including adding, searching, deleting, and
 - Document management
 
 ### Chat API
-**See More**: [Api documentation](./api-reference/chat-api.md)
+**See More**: [Api documentation](./api-reference/chat/README.md)
 
 Streaming chat functionality with AI-generated responses, thinking steps, and metadata using Server-Sent Events (SSE).
 
@@ -27,7 +27,7 @@ Streaming chat functionality with AI-generated responses, thinking steps, and me
 - Session management
 
 ### Context Proxy API
-**See More**: [Api documentation](./api-reference/context-proxy-api.md)
+**See More**: [Api documentation](./api-reference/proxy/README.md)
 
 OpenAI-compatible proxy API that provides intelligent context filtering and chat completion capabilities with enhanced message relevance processing.
 

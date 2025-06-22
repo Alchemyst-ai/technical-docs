@@ -12,15 +12,19 @@ const PLATFORM_API_KEY = process.env.PLATFORM_API_KEY;
  * @async
  */ const fetchOpenApiJson = async (branch = "main") => {
   try {
+    const openApiJsonUrl = `${PLATFORM_BASE_URLS[branch]}/api/openapi.json`;
     const openApiRes = await fetch(
-      `${PLATFORM_BASE_URLS[branch]}/api/openapi.json`
+      openApiJsonUrl
     );
 
     if (!openApiRes.ok) {
+      console.log(`Response not okay from ${openApiJsonUrl}. Error code: `, openApiRes.status);
       return null;
     }
 
     const openApiJson = await openApiRes.json();
+
+    console.log(`Discovered ${Object.keys(openApiJson.paths ?? {}).length} paths in OpenAPI JSON.`);
 
     return openApiJson;
   } catch (error) {
@@ -40,6 +44,7 @@ const doesOpenApiContextExist = async (branch = "main") => {
   );
 
   if (!fetchDocsRes.ok) {
+    console.log("Response from /api/context/view/docs is not okay. Status: ", fetchDocsRes.status);
     return null;
   }
 
@@ -59,6 +64,7 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
     by_id: false,
   };
 
+  console.log("Deleting openapi.json file currently existing in context...");
   const response = await fetch(
     `${PLATFORM_BASE_URLS[branch]}/api/v1/context/delete`,
     {
@@ -71,10 +77,12 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
   );
 
   if (!response.ok) {
+    console.log("Response from /api/context/delete is not okay. Status: ", response.status);
     return null;
   }
 
   const resJson = await response.json();
+  console.log("Response from /api/context/view/docs is not okay. Status: ", fetchDocsRes.status);
 
   return resJson;
 };
@@ -90,7 +98,8 @@ const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
   try {
     const openApiContext = JSON.stringify(newOpenApiContext);
     if (!newOpenApiContext) return null;
-    // Implementation details would go here
+    
+    console.log("Adding context of OpenAPI.json...");
     const addResponse = await fetch(
       `${PLATFORM_BASE_URLS[branch]}/api/v1/context/add`,
       {

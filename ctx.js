@@ -101,7 +101,7 @@ const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
     const openApiContext = JSON.stringify(newOpenApiContext);
     if (!newOpenApiContext) return null;
     
-    console.log("Adding context of OpenAPI.json...");
+    console.log("Adding openapi.json to context.");
     const addResponse = await fetch(
       `${PLATFORM_BASE_URLS[branch]}/api/v1/context/add`,
       {
@@ -121,6 +121,13 @@ const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
       }
     );
 
+    if (addResponse.ok) {
+      console.log("Added openapi.json to context.");
+    } else {
+      console.log("Could not add openapi.json to context.");
+      console.log("Error: ", addResponse.status);
+      console.log(await addResponse.json());
+    }
     return addResponse.ok;
   } catch (error) {
     console.error("Error adding new OpenAPI context:", error);
@@ -144,13 +151,17 @@ const replaceOpenApiFileContext = async (branch = "main") => {
       doesOpenApiContextExist(branch),
       fetchOpenApiJson(branch),
     ]);
-
-    if (checkIfOpenApiExists) {
-      await deleteExistingOpenApiContext(branch);
-    }
-
+    
     if (!latestOpenApiJson) {
+      console.log("No latest OpenAPI Json found, so not updating...");
       return null;
+    }
+    
+    if (checkIfOpenApiExists) {
+      console.log("OpenAPI JSON found in context, deleting it.");
+      await deleteExistingOpenApiContext(branch);
+    } else {
+      console.log("No OpenAPI JSON found in context, skipping delete step.");
     }
 
     const addOpenApiResponse = await addNewOpenApiContext(

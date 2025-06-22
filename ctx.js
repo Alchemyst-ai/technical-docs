@@ -77,7 +77,7 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
   );
 
   if (!response.ok) {
-    console.log("Response from /api/v1/context/delete is not okay. Status: ", response.status);
+    console.log("Response from /api/v1/context/delete is not okay. Response: ", response.json());
     return null;
   }
 
@@ -109,6 +109,7 @@ const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
           fileSize: openApiContext.length * 16,
           lastModified: new Date().toISOString(),
           content: openApiContext,
+          scope: "external",
         }),
         signal: AbortSignal.timeout(30_000),
         headers: {

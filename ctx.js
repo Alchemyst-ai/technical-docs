@@ -113,6 +113,12 @@ const addNewOpenApiContext = async (newOpenApiContext, branch = "main") => {
           lastModified: new Date().toISOString(),
           content: openApiContext,
           scope: "external",
+          metadata: {
+            fileName: "openapi.json",
+            fileType: "application/json",
+            fileSize: openApiContext.length * 16,
+            lastModified: new Date().toISOString(),
+          }
         }),
         signal: AbortSignal.timeout(30_000),
         headers: {

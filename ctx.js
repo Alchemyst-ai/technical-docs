@@ -64,6 +64,7 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
     by_id: false,
   };
 
+  console.log("Delete context request = ", JSON.stringify(deleteContextRequest));
   console.log("Deleting openapi.json file currently existing in context...");
   const response = await fetch(
     `${PLATFORM_BASE_URLS[branch]}/api/v1/context/delete`,

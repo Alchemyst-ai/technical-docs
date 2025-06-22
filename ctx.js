@@ -77,7 +77,7 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
   );
 
   if (!response.ok) {
-    console.log("Response from /api/v1/context/delete is not okay. Response: ", response.json());
+    console.log("Response from /api/v1/context/delete is not okay. Response: ", await response.json());
     return null;
   }
 

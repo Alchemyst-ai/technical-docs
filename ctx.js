@@ -35,7 +35,7 @@ const PLATFORM_API_KEY = process.env.PLATFORM_API_KEY;
 
 const doesOpenApiContextExist = async (branch = "main") => {
   const fetchDocsRes = await fetch(
-    `${PLATFORM_BASE_URLS[branch]}/api/context/view/docs`,
+    `${PLATFORM_BASE_URLS[branch]}/api/v1/context/view/docs`,
     {
       headers: {
         Authorization: `Bearer ${PLATFORM_API_KEY}`,
@@ -44,7 +44,7 @@ const doesOpenApiContextExist = async (branch = "main") => {
   );
 
   if (!fetchDocsRes.ok) {
-    console.log("Response from /api/context/view/docs is not okay. Status: ", fetchDocsRes.status);
+    console.log("Response from /api/v1/context/view/docs is not okay. Status: ", fetchDocsRes.status);
     return null;
   }
 
@@ -77,12 +77,12 @@ const deleteExistingOpenApiContext = async (branch = "main") => {
   );
 
   if (!response.ok) {
-    console.log("Response from /api/context/delete is not okay. Status: ", response.status);
+    console.log("Response from /api/v1/context/delete is not okay. Status: ", response.status);
     return null;
   }
 
   const resJson = await response.json();
-  console.log("Response from /api/context/view/docs is not okay. Status: ", fetchDocsRes.status);
+  console.log("Response from /api/v1/context/view/docs is not okay. Status: ", fetchDocsRes.status);
 
   return resJson;
 };
@@ -162,4 +162,4 @@ const replaceOpenApiFileContext = async (branch = "main") => {
   }
 };
 
-replaceOpenApiFileContext("staging");
+replaceOpenApiFileContext("main");

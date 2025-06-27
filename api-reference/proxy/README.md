@@ -66,6 +66,8 @@ Provides OpenAI-compatible chat completions with intelligent context processing.
 
 For users who don't have an OpenAI API key, this route provides chat completions using our own infrastructure without requiring external API keys.
 
+> **Note:** When using the default route, you must set the `model` field to `alchemyst-ai/alchemyst-c1`.
+
 ## Features
 
 ### Intelligent Message Filtering
@@ -140,6 +142,8 @@ The API automatically processes chat history to:
   "temperature": 0.7
 }
 ```
+
+> **Note:** If you are using the default route (`/api/v1/proxy/default/chat/completions`), you must set `"model": "alchemyst-ai/alchemyst-c1"` instead of `"gpt-3.5-turbo"`.
 
 ## Response Format
 
